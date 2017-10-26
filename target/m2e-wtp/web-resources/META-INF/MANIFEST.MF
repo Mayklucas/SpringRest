@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+Implementation-Title: Projeto_Empresa Maven Webapp
+Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: mayk.silva
+Implementation-Vendor-Id: br.com.projeto.spring
 Build-Jdk: 1.8.0_151
 Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
 
