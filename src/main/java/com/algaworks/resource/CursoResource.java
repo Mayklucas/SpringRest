@@ -36,7 +36,7 @@ public class CursoResource {
     return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(cursos.values()), HttpStatus.OK);
   }
   
-  @RequestMapping(value = "/cursos/{id}", method = RequestMethod.GET)
+  @RequestMapping(value = "/cursosPorId/{id}", method = RequestMethod.GET)
   public ResponseEntity<Curso> buscar(@PathVariable("id") Integer id) {
     Curso curso = cursos.get(id);
    
@@ -48,7 +48,7 @@ public class CursoResource {
   }
 
 
-  @RequestMapping(value = "/cursos/{id}", method = RequestMethod.DELETE)
+  @RequestMapping(value = "/ExcluirCursos/{id}", method = RequestMethod.DELETE)
   public ResponseEntity<?> deletar(@PathVariable("id") int id) {
     Curso curso = cursos.remove(id);
    
