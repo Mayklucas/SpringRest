@@ -46,5 +46,17 @@ public class CursoResource {
    
     return new ResponseEntity<Curso>(curso, HttpStatus.OK);
   }
+
+
+  @RequestMapping(value = "/cursos/{id}", method = RequestMethod.DELETE)
+  public ResponseEntity<?> deletar(@PathVariable("id") int id) {
+    Curso curso = cursos.remove(id);
+   
+    if (curso == null) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+   
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  }
  
 }
