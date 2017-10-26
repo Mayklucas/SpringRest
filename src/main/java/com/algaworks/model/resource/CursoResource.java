@@ -1,4 +1,4 @@
-package com.algaworks.resource;
+package com.algaworks.model.resource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +48,7 @@ public class CursoResource {
   }
 
 
-  @RequestMapping(value = "/ExcluirCursos/{id}", method = RequestMethod.DELETE)
+  @RequestMapping(value = "/CursosDelete/{id}", method = RequestMethod.DELETE)
   public ResponseEntity<?> deletar(@PathVariable("id") int id) {
     Curso curso = cursos.remove(id);
    
