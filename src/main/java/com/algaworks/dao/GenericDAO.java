@@ -71,5 +71,18 @@ public abstract class GenericDAO<T, I extends Serializable> {
 		return lista;
 	}
 
+	@SuppressWarnings("unchecked")
+	public T listarPorId(Class<T> classe, int id) throws Exception {
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			T entity = (T) session.load(classe, id);
+			session.flush();
+			transaction.commit();
+			return entity;
+		} catch (RuntimeException e) {
+			throw e;
+		}
+	}
 
 }
