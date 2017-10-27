@@ -34,8 +34,7 @@ public class CursoResource {
     return new ResponseEntity<Curso>(curso, HttpStatus.OK);
   }
 
-
-  @RequestMapping(value = "/CursosDelete/{id}", method = RequestMethod.DELETE)
+  @RequestMapping(value = "/cursosDelete/{id}", method = RequestMethod.DELETE)
   public ResponseEntity<?> deletar(@PathVariable("id") int id) throws Exception {
     Curso curso = dao.listarPorId(Curso.class, id);
     dao.excluir(curso);
@@ -46,5 +45,18 @@ public class CursoResource {
    
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
+  
+  @RequestMapping(value = "/cursosAlterar/{id}", method = RequestMethod.GET)
+  public ResponseEntity<Curso> alterar(@PathVariable("id") Integer id ,@PathVariable("nome") String nome,
+		  @PathVariable("duracao") String duracao) throws Exception {
+	Curso curso = dao.listarPorId(Curso.class, id);
+	dao.alterar(curso);
+	
+	 if (curso == null) {
+	      return new ResponseEntity<Curso>(HttpStatus.NOT_FOUND);
+	    }
+	   
+	    return new ResponseEntity<Curso>(curso, HttpStatus.OK);
+	  }
+  }
  
-}
