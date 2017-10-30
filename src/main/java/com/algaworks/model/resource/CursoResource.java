@@ -1,5 +1,6 @@
 package com.algaworks.model.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -23,15 +24,27 @@ public class CursoResource {
   }
   
   
-  @RequestMapping(value = "/cursosPorId/{id}", method = RequestMethod.GET)
+  @RequestMapping(value = "/cursos/{id}", method = RequestMethod.GET)
   public ResponseEntity<Curso> buscar(@PathVariable("id") Integer id) throws Exception {
     Curso curso = dao.listarPorId(Curso.class, id);
    
     if (curso == null) {
-      return new ResponseEntity<Curso>(HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
    
     return new ResponseEntity<Curso>(curso, HttpStatus.OK);
+  }
+  
+  @RequestMapping(value = "/cursosAdicionar/{nome}/{duracao}", method = RequestMethod.GET)
+  public ResponseEntity<List<Curso>> Adicionar(@PathVariable("nome") String nome, 
+		  @PathVariable("duracao") String duracao){
+	Curso curso = new Curso();
+	curso.setNome(nome);
+	curso.setDuracao(duracao);
+	dao.salvar(curso);
+	
+	return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
+	
   }
 
   @RequestMapping(value = "/cursosDelete/{id}", method = RequestMethod.DELETE)
@@ -46,17 +59,15 @@ public class CursoResource {
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
   
-  @RequestMapping(value = "/cursosAlterar/{id}", method = RequestMethod.GET)
-  public ResponseEntity<Curso> alterar(@PathVariable("id") Integer id ,@PathVariable("nome") String nome,
+  /*@RequestMapping(value = "/cursosAlterar/{id}/{nome}/{duracao}", method = RequestMethod.GET)
+  public ResponseEntity<List<Curso>> alterar(@PathVariable("id") Integer id ,@PathVariable("nome") String nome,
 		  @PathVariable("duracao") String duracao) throws Exception {
 	Curso curso = dao.listarPorId(Curso.class, id);
+	curso.setNome(nome);
+	curso.setDuracao(duracao);
 	dao.alterar(curso);
 	
-	 if (curso == null) {
-	      return new ResponseEntity<Curso>(HttpStatus.NOT_FOUND);
-	    }
-	   
-	    return new ResponseEntity<Curso>(curso, HttpStatus.OK);
-	  }
-  }
+	return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
+  }*/
+}
  
