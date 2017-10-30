@@ -59,7 +59,7 @@ public class CursoResource {
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
   
-  /*@RequestMapping(value = "/cursosAlterar/{id}/{nome}/{duracao}", method = RequestMethod.GET)
+ @RequestMapping(value = "/cursosAlterar/{nome}/{duracao}", method = RequestMethod.GET)
   public ResponseEntity<List<Curso>> alterar(@PathVariable("id") Integer id ,@PathVariable("nome") String nome,
 		  @PathVariable("duracao") String duracao) throws Exception {
 	Curso curso = dao.listarPorId(Curso.class, id);
@@ -68,6 +68,6 @@ public class CursoResource {
 	dao.alterar(curso);
 	
 	return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
-  }*/
+  }
 }
  
