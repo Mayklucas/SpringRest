@@ -1,17 +1,11 @@
-<section class="rest">
-  <article>
-    <div>
-     <table>
-      <tr>
-      <td>Cursos</td><td><input type="text" [(ngModel)]="cursos.curso"/></td>
-      </tr>
-      <tr>
-      <td>Duração Do Curso</td><td><input type="text" [(ngModel)]="cursos.duracao"/></td>
-      </tr>
-      <p>O curso que eu quero fazer é {{ cursos.curso }} com a duração de  {{ cursos.duracao }}</p>   
-       
-      </table>
-    </div>
-  </article>
-
-</section>
+<form class="form-inline">
+      <div class="form-group">
+        <label for="exampleInputName2">Curso</label>
+        <input type="text" class="form-control" id="curso" placeholder="Jane Doe"/>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail2">Duração do Curso</label>
+        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
+      </div>
+      <button type="submit" class="btn btn-default">Cadastra</button>
+</form>

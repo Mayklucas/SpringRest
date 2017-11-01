@@ -7,11 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjetinhoRestComponent implements OnInit {
 
-  cursos: any = {
-    curso: 'curso',
-    duracao: '00hrs'
-  }
-
   constructor() { }
 
   ngOnInit() {
