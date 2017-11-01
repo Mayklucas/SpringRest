@@ -8,12 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjetoAngularComponent implements OnInit {
 
+  id: number;
+  curso: string = '';
+  duracao: string = '';
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080').subscribe(data => {
-      console.log()
-    })
+    this.http.get('http://localhost:8080/cursosListar').subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  metodoCadastra(): void {
+    this.http.get('http://localhost:8080/cursosAdicionar/' + this.curso + '/' + this.duracao)
+    .subscribe(data => {
+        console.log(data);
+ 
+    });
+  }
+
+  metodoListar(): void {
+
+  }
+
+  metodoDeleta() {
+
+  }
+
+  metodoAlterar() {
+
   }
 
 }

@@ -1,12 +1,12 @@
 <form class="form-horizontal">
   <div class="form-group">
-    <label for="curso">Curso</label>
-    <input type="text" class="form-control" id="curso" placeholder="Java"/>
+    <label for="curso" (ngSubmit)="metodoCadastra()">Curso</label>
+    <input type="text" class="form-control" id="nome" placeholder="Java" [value]="nome"/>
   </div>
 
   <div class="form-group">
-    <label for="duracao">Duração do Curso</label>
-    <input type="email" class="form-control" id="duracao" placeholder="00hs"/>
+    <label for="duracao" (ngSubmit)="metodoCadastra()" >Duração do Curso</label>
+    <input type="text" class="form-control" id="duracao" placeholder="00hs" [value]="duracao"/>
   </div>
 
   <button type="submit" class="btn btn-danger">Cadastra</button>
