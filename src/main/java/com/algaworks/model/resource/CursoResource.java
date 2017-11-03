@@ -37,7 +37,7 @@ public class CursoResource {
     return new ResponseEntity<Curso>(curso, HttpStatus.OK);
   }
   
-  @RequestMapping(value = "/cursosAdicionar/{nome}/{duracao}", method = RequestMethod.GET)
+  @RequestMapping(value = "/cursosAdicionar/{nome}/{duracao}", method = RequestMethod.POST)
   public ResponseEntity<List<Curso>> Adicionar(@PathVariable("nome") String nome, 
 		  @PathVariable("duracao") String duracao){
 	Curso curso = new Curso();

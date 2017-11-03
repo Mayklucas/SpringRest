@@ -17,6 +17,7 @@ export class ProjetoAngularComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('http://localhost:8080/cursosListar').subscribe(data => {
       console.log(data);
+          
     });
   }
 
