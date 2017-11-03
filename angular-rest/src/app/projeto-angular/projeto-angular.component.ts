@@ -8,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjetoAngularComponent implements OnInit {
 
-  id: number;
   curso: string = '';
   duracao: string = '';
-  listarCursos: any = {};
-
+  listarCursos: any = [];
+  
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -30,9 +29,13 @@ export class ProjetoAngularComponent implements OnInit {
     });
   }
 
-  metodoDeleta() {
-    this.http.get('http://localhost:8080/cursosDelete/' + this.id ).subscribe(data => {
-      this.listarCursos = data;
+  metodoListar(){
+    
+  }
+  metodoDeleta(id) {
+    this.http.delete('http://localhost:8080/cursosDelete/' + id).subscribe(
+      data => {
+        this.listarCursos = data;
     });
 
   }

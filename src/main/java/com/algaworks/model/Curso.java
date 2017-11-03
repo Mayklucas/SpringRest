@@ -15,10 +15,10 @@ public class Curso {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(unique = true, name = "nome", nullable = false)
+	@Column(unique = false, name = "nome", nullable = false)
 	private String nome;
 	
-	@Column(unique = true, name = "duracao", nullable = false)
+	@Column(unique = false, name = "duracao", nullable = false)
 	private String duracao;
 
 	public Integer getId() {

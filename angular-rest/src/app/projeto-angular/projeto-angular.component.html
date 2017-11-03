@@ -1,4 +1,4 @@
-<form class="form-horizontal">
+<form class="form-control">
   <div class="form-group">
     <label for="curso">Curso</label>
     <input type="text" class="form-control" id="nome" placeholder="Java"
@@ -23,11 +23,11 @@
      <th>Deleta</th>
      <th>Alterar</th>
    </tr>
-   <tr *ngFor="let curso of listarCursos" >
+   <tr *ngFor="let curso of listarCursos">
      <th>{{ curso.id }}</th>
      <th><input type="text"  id="nome" class="form-control"  value="{{ curso.nome }}"/></th>
      <th><input type="text"  id="duracao" class="form-control"  value="{{ curso.duracao }}"/></th>
-     <th><button class="btn btn-danger" (click)="metodoDeleta()">Excluir</button></th>
+     <th><button class="btn btn-danger" (click)="metodoDeleta( curso.id )">Excluir</button></th>
      <th><button class="btn btn-danger">Alterar</button></th>
    </tr>
 </table>

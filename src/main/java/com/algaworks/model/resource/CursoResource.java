@@ -37,7 +37,7 @@ public class CursoResource {
     return new ResponseEntity<Curso>(curso, HttpStatus.OK);
   }
   
-  @RequestMapping(value = "/cursosAdicionar/{nome}/{duracao}", method = RequestMethod.POST)
+  @RequestMapping(value = "/cursosAdicionar/{nome}/{duracao}", method = RequestMethod.GET)
   public ResponseEntity<List<Curso>> Adicionar(@PathVariable("nome") String nome, 
 		  @PathVariable("duracao") String duracao){
 	Curso curso = new Curso();
@@ -61,7 +61,7 @@ public class CursoResource {
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
   
- @RequestMapping(value = "/cursosAlterar/{nome}/{duracao}", method = RequestMethod.GET)
+ @RequestMapping(value = "/cursosAlterar/{id}/{nome}/{duracao}", method = RequestMethod.PUT)
   public ResponseEntity<List<Curso>> alterar(@PathVariable("id") Integer id ,@PathVariable("nome") String nome,
 		  @PathVariable("duracao") String duracao) throws Exception {
 	Curso curso = dao.listarPorId(Curso.class, id);
