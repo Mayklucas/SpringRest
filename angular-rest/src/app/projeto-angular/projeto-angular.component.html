@@ -11,7 +11,7 @@
        [(ngModel)]="duracao" name="duracao"/>
   </div>
 
-  <button type="submit" class="btn btn-danger" (click)=" metodoCadastra()">
+  <button type="submit" class="btn btn-danger" (click)=" metodoAdicionar()">
     Cadastra</button>
 </form>
 <br>
@@ -25,9 +25,24 @@
    </tr>
    <tr *ngFor="let curso of listarCursos">
      <th>{{ curso.id }}</th>
-     <th><input type="text"  id="nome" class="form-control"  value="{{ curso.nome }}"/></th>
-     <th><input type="text"  id="duracao" class="form-control"  value="{{ curso.duracao }}"/></th>
-     <th><button class="btn btn-danger" (click)="metodoDeleta( curso.id )">Excluir</button></th>
-     <th><button class="btn btn-danger">Alterar</button></th>
+     <th>
+       <input type="text"  id="nome" class="form-control" name="nomeIn" 
+       value="{{ curso.nome }}" #nomeIn/>
+     </th>
+     <th>
+       <input type="text"  id="duracao" class="form-control"  name="duracaoIn" 
+       value="{{ curso.duracao }}" #duracaoIn/>
+     </th>
+     <th>
+       <button class="btn btn-danger" (click)="metodoDeleta( curso.id )">
+         Excluir
+       </button>
+     </th>
+     <th>
+       <button class="btn btn-danger" (click)="metodoAlterar( curso.id, nomeIn.value, 
+        duracaoIn.value )">
+         Alterar
+       </button>
+     </th>
    </tr>
 </table>

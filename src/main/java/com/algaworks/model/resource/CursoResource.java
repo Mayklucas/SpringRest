@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.dao.CursoDAO;
@@ -37,12 +39,9 @@ public class CursoResource {
     return new ResponseEntity<Curso>(curso, HttpStatus.OK);
   }
   
-  @RequestMapping(value = "/cursosAdicionar/{nome}/{duracao}", method = RequestMethod.GET)
-  public ResponseEntity<List<Curso>> Adicionar(@PathVariable("nome") String nome, 
-		  @PathVariable("duracao") String duracao){
-	Curso curso = new Curso();
-	curso.setNome(nome);
-	curso.setDuracao(duracao);
+  @RequestMapping(value = "/cursosAdicionar/", method = RequestMethod.POST)
+  @ResponseBody
+  public ResponseEntity<List<Curso>> Adicionar(@RequestBody Curso curso){
 	dao.salvar(curso);
 	
 	return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
@@ -54,19 +53,16 @@ public class CursoResource {
     Curso curso = dao.listarPorId(Curso.class, id);
     dao.excluir(curso);
     
-    if (curso == null) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-   
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
+    
   }
   
- @RequestMapping(value = "/cursosAlterar/{id}/{nome}/{duracao}", method = RequestMethod.PUT)
-  public ResponseEntity<List<Curso>> alterar(@PathVariable("id") Integer id ,@PathVariable("nome") String nome,
-		  @PathVariable("duracao") String duracao) throws Exception {
-	Curso curso = dao.listarPorId(Curso.class, id);
-	curso.setNome(nome);
-	curso.setDuracao(duracao);
+ @RequestMapping(value = "/cursosAlterar/", method = RequestMethod.PUT)
+ @ResponseBody
+  public ResponseEntity<List<Curso>> alterar(@RequestBody Curso curso) throws Exception{
+	Curso cursoAt = dao.listarPorId(Curso.class, curso.getId());
+	cursoAt.setNome(curso.getNome());
+	cursoAt.setDuracao(curso.getDuracao());
 	dao.alterar(curso);
 	
 	return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
