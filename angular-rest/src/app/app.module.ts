@@ -5,11 +5,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ProjetoAngularComponent } from './projeto-angular/projeto-angular.component';
+import { AngularFormComponent } from './angular-form/angular-form.component';
+import { AngularPesquisarComponent } from './angular-pesquisar/angular-pesquisar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjetoAngularComponent
+    ProjetoAngularComponent,
+    AngularFormComponent,
+    AngularPesquisarComponent
   ],
   imports: [
     BrowserModule,

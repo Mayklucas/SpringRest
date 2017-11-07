@@ -1,8 +1,8 @@
 <form class="form-control">
-  <div class="form-group">
+  <div class="form-group has-success">
     <label for="curso">Curso</label>
     <input type="text" class="form-control" id="nome" placeholder="Java"
-       [(ngModel)]="curso" name="nome">
+       [(ngModel)]="curso" name="nome" aria-describedby="helpBlock2">
   </div>
 
   <div class="form-group">
@@ -16,46 +16,7 @@
   </button>
 </form>
 <br>
-<form class="form-control">
-  <div class="form-group">
-     <input type="text" class="form-control" id="buscar" placeholder="nome do curso" 
-       [(ngModel)]="buscarNome" name="curso"/>
-     <br>
-     <button type="submit" class="btn btn-danger" (click)="metodoBuscar()">
-       Pesquisar
-     </button>
-  </div>
-</form>
+<app-angular-pesquisar></app-angular-pesquisar>
 
 <br>
-<table class="table table-striped">
-   <tr>
-     <th>Id</th>
-     <th>Cursos</th>
-     <th>Duração</th>
-     <th>Deleta</th>
-     <th>Alterar</th>
-   </tr>
-   <tr *ngFor="let curso of listarCursos">
-     <th>{{ curso.id }}</th>
-     <th>
-       <input type="text"  id="nome" class="form-control" name="nomeIn" 
-       value="{{ curso.nome }}" #nomeIn/>
-     </th>
-     <th>
-       <input type="text"  id="duracao" class="form-control"  name="duracaoIn" 
-       value="{{ curso.duracao }}" #duracaoIn/>
-     </th>
-     <th>
-       <button class="btn btn-danger" (click)="metodoDeleta( curso.id )">
-         Excluir
-       </button>
-     </th>
-     <th>
-       <button class="btn btn-danger" (click)="metodoAlterar( curso.id, nomeIn.value, 
-        duracaoIn.value )">
-         Alterar
-       </button>
-     </th>
-   </tr>
-</table>
+<app-angular-form></app-angular-form>

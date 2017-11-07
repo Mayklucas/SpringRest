@@ -11,22 +11,10 @@ export class ProjetoAngularComponent implements OnInit {
   curso: string = '';
   duracao: string = '';
   listarCursos: any = [];
-  buscarNome: String;
   
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.http.get('http://localhost:8080/cursosListar').subscribe(data => {
-      this.listarCursos = data;
-          
-    });
-  }
-
-  metodoBuscar(): void{
-    this.http.get('http://localhost:8080/buscarCursos/' + this.buscarNome).subscribe(data => {
-      this.listarCursos = data;
-    });
-  }
+  ngOnInit() {}
 
   metodoAdicionar(): void {
      const curso = {
@@ -42,27 +30,4 @@ export class ProjetoAngularComponent implements OnInit {
         this.duracao = '';
      }
   }
-
-  metodoDeleta(id) {
-    this.http.delete('http://localhost:8080/cursosDelete/' + id).subscribe(
-      data => {
-        this.listarCursos = data;
-    });
-
-  }
-
-  metodoAlterar(id, nomeIn, duracaoIn) {
-    const curso = {
-      id: id,
-      nome: nomeIn,
-      duracao: duracaoIn
-  }
-     if((id != undefined) && (nomeIn != '') && (duracaoIn != '')){
-        this.http.put('http://localhost:8080/cursosAlterar/', curso)
-        .subscribe(data => {
-            this.listarCursos = data;
-        });
-     }
-  }
-
 }
