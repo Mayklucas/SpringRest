@@ -11,6 +11,7 @@ export class ProjetoAngularComponent implements OnInit {
   curso: string = '';
   duracao: string = '';
   listarCursos: any = [];
+  buscarNome: String;
   
   constructor(private http: HttpClient) { }
 
@@ -18,6 +19,12 @@ export class ProjetoAngularComponent implements OnInit {
     this.http.get('http://localhost:8080/cursosListar').subscribe(data => {
       this.listarCursos = data;
           
+    });
+  }
+
+  metodoBuscar(): void{
+    this.http.get('http://localhost:8080/buscarCursos/' + this.buscarNome).subscribe(data => {
+      this.listarCursos = data;
     });
   }
 

@@ -12,8 +12,21 @@
   </div>
 
   <button type="submit" class="btn btn-danger" (click)=" metodoAdicionar()">
-    Cadastra</button>
+    Cadastra
+  </button>
 </form>
+<br>
+<form class="form-control">
+  <div class="form-group">
+     <input type="text" class="form-control" id="buscar" placeholder="nome do curso" 
+       [(ngModel)]="buscarNome" name="curso"/>
+     <br>
+     <button type="submit" class="btn btn-danger" (click)="metodoBuscar()">
+       Pesquisar
+     </button>
+  </div>
+</form>
+
 <br>
 <table class="table table-striped">
    <tr>
