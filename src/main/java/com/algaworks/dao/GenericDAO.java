@@ -86,19 +86,20 @@ public abstract class GenericDAO<T, I extends Serializable> {
 		}
 	}
 
-	public Long listarIdPorNome(String classe, String nome) {
+	@SuppressWarnings("unchecked")
+	public List<T> listarIdPorNome(String classe, String nome) throws Exception {
 		Transaction transaction = null;
-		Long id = null;
+		List<T> listarnome = null;
 		try {
 			transaction = session.beginTransaction();
 			Query consulta = session.getNamedQuery(classe + ".listarIdPorNome");
 			consulta.setString("nome", nome);
-			id = (Long) consulta.uniqueResult();
+			listarnome = consulta.list();
+			session.flush();
 			transaction.commit();
+			return listarnome;
 		} catch (RuntimeException e) {
 			throw e;
 		}
-		return id;
 	}
-
 }
