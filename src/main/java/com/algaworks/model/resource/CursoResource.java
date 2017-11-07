@@ -29,14 +29,11 @@ public class CursoResource {
   
   
   @RequestMapping(value = "/cursos/{id}", method = RequestMethod.GET)
-  public ResponseEntity<Curso> buscar(@PathVariable("id") Integer id) throws Exception {
+  public ResponseEntity<List<Curso>> buscar(@PathVariable("id") Integer id) throws Exception {
     Curso curso = dao.listarPorId(Curso.class, id);
    
-    if (curso == null) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-   
-    return new ResponseEntity<Curso>(curso, HttpStatus.OK);
+    return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
+    
   }
   
   @RequestMapping(value = "/cursosAdicionar/", method = RequestMethod.POST)
