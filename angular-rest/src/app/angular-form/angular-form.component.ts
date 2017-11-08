@@ -1,5 +1,6 @@
+import { OutletContext } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-angular-form',
@@ -10,7 +11,7 @@ export class AngularFormComponent implements OnInit {
 
   curso: string = '';
   duracao: string = '';
-  listarCursos: any = [];
+  listarCursos: any = '';
 
   constructor(private http: HttpClient) { }
 

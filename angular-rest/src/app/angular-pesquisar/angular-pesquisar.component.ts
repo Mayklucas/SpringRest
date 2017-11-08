@@ -1,5 +1,6 @@
+import { EventEmitter } from 'events';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-angular-pesquisar',

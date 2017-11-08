@@ -30,4 +30,5 @@ export class ProjetoAngularComponent implements OnInit {
         this.duracao = '';
      }
   }
+
 }
