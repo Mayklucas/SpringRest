@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-projeto-angular',
@@ -10,7 +10,7 @@ export class ProjetoAngularComponent implements OnInit {
 
   curso: string = '';
   duracao: string = '';
-  listarCursos: any = [];
+  @Output() metodoListarCurso = new EventEmitter;
   
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class ProjetoAngularComponent implements OnInit {
      if((this.curso != undefined) && (this.duracao != undefined)){
        this.http.post('http://localhost:8080/cursosAdicionar/', curso)
         .subscribe(data => {
-          this.listarCursos = data;
+          this.metodoListarCurso.emit(data);
         });
         this.curso = '';
         this.duracao = '';

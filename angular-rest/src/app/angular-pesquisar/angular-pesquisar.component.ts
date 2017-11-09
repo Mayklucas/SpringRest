@@ -1,6 +1,5 @@
-import { EventEmitter } from 'events';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-angular-pesquisar',
@@ -9,7 +8,7 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class AngularPesquisarComponent implements OnInit {
 
-  listarCursos: any = [];
+  @Output() metodoListarCurso = new EventEmitter;
   buscarNome: String;
 
   constructor(private http: HttpClient) { }
@@ -19,8 +18,12 @@ export class AngularPesquisarComponent implements OnInit {
 
   metodoBuscar(): void{
     this.http.get('http://localhost:8080/buscarCursos/' + this.buscarNome).subscribe(data => {
-      this.listarCursos = data;
+      this.metodoListarCurso.emit(data);
     });
+  }
+
+  metodoBuscarCurso(evento) {
+     this.metodoListarCurso.emit(evento);
   }
 
 }
