@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
 
-  metodoListarCurso: any = {};
+  metodoListarCurso: any = [];
  
   constructor(private http: HttpClient) {}
 
@@ -20,5 +20,7 @@ export class AppComponent {
 
   metodoAdicionarCurso(adicionar){
      this.metodoListarCurso.push(adicionar);
-  }
+     return this.ngOnInit();
+  } 
+ 
 }

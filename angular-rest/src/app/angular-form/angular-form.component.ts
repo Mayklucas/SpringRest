@@ -11,11 +11,18 @@ export class AngularFormComponent implements OnInit {
 
   curso: string = '';
   duracao: string = '';
+  buscarNome: String;
   @Input('metodoListarCurso') metodoListarCurso: any = {};
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {}
+
+  metodoBuscar(): void{
+    this.http.get('http://localhost:8080/buscarCursos/' + this.buscarNome).subscribe(data => {
+      this.metodoListarCurso = data;
+    });
+  }
 
   metodoDeleta(id) {
     this.http.delete('http://localhost:8080/cursosDelete/' + id).subscribe(
@@ -38,5 +45,9 @@ export class AngularFormComponent implements OnInit {
         });
      }
   }
+
+  metodoAdicionarCurso(adicionar){
+    this.metodoListarCurso.push(adicionar);
+ }
 
 }
