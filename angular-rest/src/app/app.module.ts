@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ProjetoAngularComponent } from './projeto-angular/projeto-angular.component';
 import { AngularFormComponent } from './angular-form/angular-form.component';
 
+import { FieldsetModule } from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,8 @@ import { AngularFormComponent } from './angular-form/angular-form.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FieldsetModule
   ],
   providers: [],
   bootstrap: [AppComponent]
