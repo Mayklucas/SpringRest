@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { ProjetoAngularComponent } from './projeto-angular/projeto-angular.component';
 import { AngularFormComponent } from './angular-form/angular-form.component';
 
-import { FieldsetModule } from 'primeng/primeng';
+import {InputTextModule, ButtonModule, DataTableModule, SharedModule} from 'primeng/primeng';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +20,10 @@ import { FieldsetModule } from 'primeng/primeng';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    FieldsetModule
+    InputTextModule,
+    ButtonModule,
+    DataTableModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
