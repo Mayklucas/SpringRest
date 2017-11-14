@@ -47,18 +47,40 @@
 <fieldset>
   <h3>Procure seu curso:</h3>
   <span class="ui-float-label">
-    <input id="float-input" type="text" size="30" pInputText> 
+    <input id="float-input" type="text" size="30" styleClass="col-inp"pInputText> 
     <label for="float-input">Html</label>
   </span>
   <br>
-  <button pButton type="button" (click)="metodoBuscar()" label="Pesquisar"  class="ui-button-danger">
+  <button pButton type="button" (click)="metodoBuscar()" label="Pesquisar"  class="ui-button-primary">
   </button>
-  <button pButton type="button" (click)="metodoBuscar()" label="Listar"  class="ui-button-danger">
+  <button pButton type="button" (click)="metodoBuscar()" label="Listar"  class="ui-button-primary">
   </button>
 </fieldset>
 <br>
-<p-dataTable [value]="cars" [loading]="true">
-  <p-column header="Curso"></p-column>
-  <p-column header="Duração"></p-column>
-  
+<p-dataTable [value]="metodoListarCurso">
+  <p-column field="id" header="id"></p-column>
+  <p-column field="nome" header="Curso">
+    <ng-template pTemplate="body" let-curso="rowData">
+       <input id="float-input" type="text" name="nomeIn" 
+       value="{{ curso.nome }}" pInputText #nomeIn>
+    </ng-template>
+  </p-column>
+  <p-column field="duracao" header="Duração">
+    <ng-template pTemplate="body" let-curso="rowData">
+          <input id="float-input" type="text" name="duracaoIn" 
+          value="{{ curso.duracao }}" pInputText #duracaoIn>
+    </ng-template>
+  </p-column>
+  <p-column header="Excluir">
+      <ng-template pTemplate="body" let-curso="rowData">
+          <button pButton icon="fa-trash" (click)="metodoDeleta( curso.id )">
+          </button>
+      </ng-template>
+  </p-column>
+  <p-column header="Alterar">
+      <ng-template pTemplate="body" let-curso="rowData">
+          <button pButton icon="fa-pencil" (click)="metodoAlterar( curso.id, nomeIn.value, 
+          duracaoIn.value )"></button>
+      </ng-template>
+  </p-column>
 </p-dataTable>

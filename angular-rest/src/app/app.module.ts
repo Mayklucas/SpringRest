@@ -7,7 +7,10 @@ import { AppComponent } from './app.component';
 import { ProjetoAngularComponent } from './projeto-angular/projeto-angular.component';
 import { AngularFormComponent } from './angular-form/angular-form.component';
 
-import {InputTextModule, ButtonModule, DataTableModule, SharedModule} from 'primeng/primeng';
+import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { ButtonModule } from 'primeng/components/button/button';
+import { DataTableModule } from 'primeng/components/datatable/datatable';
+import { SharedModule } from 'primeng/primeng';
 
 
 @NgModule({
