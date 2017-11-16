@@ -47,13 +47,16 @@
 <fieldset>
   <h3>Procure seu curso:</h3>
   <span class="ui-float-label">
-    <input id="float-input" type="text" size="30" pInputText> 
+    <input id="float-input" type="text" size="30" pInputText 
+    [(ngModel)]="buscarNome" name="curso"> 
     <label for="float-input">Html</label>
   </span>
   <br>
-  <button pButton type="button" (click)="metodoBuscar()" label="Pesquisar"  class="ui-button-primary">
+  <button pButton type="button" (click)="metodoBuscar()" label="Pesquisar"  
+  class="ui-button-primary">
   </button>
-  <button pButton type="button" (click)="metodoBuscar()" label="Listar"  class="ui-button-primary">
+  <button pButton type="button" (click)="metodoBuscar()" label="Listar"  
+  class="ui-button-primary">
   </button>
 </fieldset>
 <br>
@@ -61,14 +64,14 @@
   <p-column field="id" header="id" styleClass="col-id"></p-column>
   <p-column field="nome" header="Curso" styleClass="col-curso">
     <ng-template pTemplate="body" let-curso="rowData">
-       <input id="float-input" type="text" name="nomeIn" 
-       value="{{ curso.nome }}" pInputText #nomeIn>
+       <input  pInputText id="float-input" type="text" name="nomeIn" 
+       value="{{ curso.nome }}" #nomeIn>
     </ng-template>
   </p-column>
   <p-column field="duracao" header="Duração" styleClass="col-duracao">
     <ng-template pTemplate="body" let-curso="rowData">
-          <input id="float-input" type="text" name="duracaoIn" 
-          value="{{ curso.duracao }}" pInputText #duracaoIn>
+          <input pInputText id="float-input" type="text" name="duracaoIn" 
+          value="{{ curso.duracao }}" #duracaoIn>
     </ng-template>
   </p-column>
   <p-column header="Excluir" styleClass="col-excluir">

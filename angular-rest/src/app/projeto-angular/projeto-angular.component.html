@@ -19,12 +19,14 @@
 <fieldset>
   <h3>Curso:</h3>
   <span class="ui-float-label">
-    <input id="float-input" type="text" size="30" pInputText> 
+    <input id="float-input" type="text" size="30" pInputText 
+    [(ngModel)]="curso" name="nome"> 
     <label for="float-input">Java</label>
   </span>
   <h3>Duração:</h3>
   <span class="ui-float-label">
-    <input id="float-input" type="text" size="30" pInputText> 
+    <input id="float-input" type="text" size="30" pInputText
+    [(ngModel)]="duracao" name="duracao"> 
     <label for="float-input">00hs</label>
   </span>
   <br>
