@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.col-id {
+    width: 50px;
+    text-align: center;
+}
+
+.col-curso {
+   /*width: 380px;*/
+   text-align: center;
+}
+
+.col-duracao {
+    /*width: 380px;*/
+    text-align: center;
+}
+
+.col-excluir {
+    width: 80px;
+    text-align: center;
+}
+.col-form {
+    left: 60px;
+    width: 1146px;
+}
+
+.col-alterar {
+    width: 80px;
+    text-align: center;
+}

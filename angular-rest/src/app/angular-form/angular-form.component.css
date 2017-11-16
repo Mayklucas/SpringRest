@@ -1,10 +1,11 @@
 fieldset{
     margin-left: 60px;   
-    margin-right: 60px;  
+    margin-right: 57px;  
 }
 
 input{
     height: 35px;
+    width: 400px;
 }
 
 h3{
