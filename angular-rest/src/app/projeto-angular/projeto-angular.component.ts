@@ -10,25 +10,30 @@ export class ProjetoAngularComponent implements OnInit {
 
   curso: string = '';
   duracao: string = '';
+  camposLimpos = '';
   @Output() metodoListarCurso = new EventEmitter;
   
   constructor(private http: HttpClient) { }
 
   ngOnInit() {}
 
-  metodoAdicionar(): void {
+  metodoAdicionar(nome: string, duracao: string): void {
      const curso = {
-       nome: this.curso,
-       duracao: this.duracao
+       nome: nome,
+       duracao: duracao
      };
-     if((this.curso != undefined) && (this.duracao != undefined)){
+     if((nome != undefined) && (duracao != undefined)){
        this.http.post('http://localhost:8080/cursosAdicionar/', curso)
         .subscribe(data => {
           this.metodoListarCurso.emit(curso);
         });
-        this.curso = '';
-        this.duracao = '';
+        nome = '';
+        duracao = '';
      }
   }
 
+  metodoLimpar(): void{
+      this.curso = this.camposLimpos;
+      this.duracao = this.camposLimpos;
+  }
 }

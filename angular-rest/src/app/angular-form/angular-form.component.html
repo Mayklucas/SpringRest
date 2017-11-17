@@ -48,42 +48,50 @@
   <h3>Procure seu curso:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
-    [(ngModel)]="buscarNome" name="curso"> 
+     name="curso" #buscarNome> 
     <label for="float-input">Html</label>
   </span>
   <br>
-  <button pButton type="button" (click)="metodoBuscar()" label="Pesquisar"  
+  <button pButton type="button" (click)="metodoBuscar(buscarNome.value)" label="Pesquisar"  
   class="ui-button-primary">
   </button>
-  <button pButton type="button" (click)="metodoBuscar()" label="Listar"  
+  <button pButton type="button" (click)="metodoListar()" label="Listar"  
   class="ui-button-primary">
   </button>
 </fieldset>
 <br>
 <p-dataTable [value]="metodoListarCurso" styleClass="col-form">
-  <p-column field="id" header="id" styleClass="col-id"></p-column>
+  <p-column field="id" header="id" styleClass="col-id">
+    <ng-template pTemplate="body" let-curso="rowData">
+        {{ curso.id }}
+    </ng-template>
+  </p-column>
+  
   <p-column field="nome" header="Curso" styleClass="col-curso">
     <ng-template pTemplate="body" let-curso="rowData">
-       <input  pInputText id="float-input" type="text" name="nomeIn" 
-       value="{{ curso.nome }}" #nomeIn>
+       <input  pInputText id="float-input" type="text" name="nome" 
+       value="{{ curso.nome }}" #nome>
     </ng-template>
   </p-column>
+
   <p-column field="duracao" header="Duração" styleClass="col-duracao">
     <ng-template pTemplate="body" let-curso="rowData">
-          <input pInputText id="float-input" type="text" name="duracaoIn" 
-          value="{{ curso.duracao }}" #duracaoIn>
+          <input pInputText id="float-input" type="text" name="duracao" 
+          value="{{ curso.duracao }}" #duracao>
     </ng-template>
   </p-column>
+
   <p-column header="Excluir" styleClass="col-excluir">
       <ng-template pTemplate="body" let-curso="rowData">
           <button pButton icon="fa-trash" (click)="metodoDeleta( curso.id )">
           </button>
       </ng-template>
   </p-column>
+
   <p-column header="Alterar" styleClass="col-alterar">
       <ng-template pTemplate="body" let-curso="rowData">
-          <button pButton icon="fa-pencil" (click)="metodoAlterar( curso.id, nomeIn.value, 
-          duracaoIn.value )"></button>
+          <button pButton icon="fa-pencil" (click)="metodoAlterar( curso.id, curso.nome, 
+          curso.duracao )"></button>
       </ng-template>
   </p-column>
 </p-dataTable>

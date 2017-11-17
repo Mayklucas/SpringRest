@@ -20,20 +20,20 @@
   <h3>Curso:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
-    [(ngModel)]="curso" name="nome"> 
+    name="nome" #nome> 
     <label for="float-input">Java</label>
   </span>
   <h3>Duração:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText
-    [(ngModel)]="duracao" name="duracao"> 
+    name="duracao" #duracao> 
     <label for="float-input">00hs</label>
   </span>
   <br>
-  <button pButton type="button" (click)="metodoAdicionar()" label="Cadastra"  
-  class="ui-button-primary">
+  <button pButton type="button" (click)="metodoAdicionar(nome.value, duracao.value)" 
+  label="Cadastra" class="ui-button-primary">
   </button>
-  <button pButton type="button" (click)="metodoAdicionar()" label="Limpar"  
+  <button pButton type="button" (click)="metodoLimpar()" label="Limpar"  
   class="ui-button-primary">
   </button>
 </fieldset>
