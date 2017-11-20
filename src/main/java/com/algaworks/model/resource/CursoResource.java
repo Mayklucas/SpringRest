@@ -3,6 +3,7 @@ package com.algaworks.model.resource;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,13 +19,15 @@ import com.algaworks.model.Curso;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping
 public class CursoResource {
  
-  CursoDAO dao = new CursoDAO();
+  @Autowired
+  private CursoDAO dao;
 
-  @RequestMapping(value = "/cursosListar", method = RequestMethod.GET)
-  public ResponseEntity<List<Curso>> listar() {
-    return new ResponseEntity<List<Curso>>(dao.listar(Curso.class), HttpStatus.OK);
+  @GetMapping
+  public List<Curso> listar() {
+	  return dao.findAll();
   }
   
   
@@ -40,13 +43,10 @@ public class CursoResource {
     
   }
   
-  @RequestMapping(value = "/cursosAdicionar/", method = RequestMethod.POST)
-  @ResponseBody
-  public ResponseEntity<List<Curso>> Adicionar(@RequestBody Curso curso){
-	dao.salvar(curso);
-	
-	return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
-	
+  @PostMapping("/{nome}/{duracao}")
+  public List<Curso> adicionar (@RequestBody Curso curso) {
+	  dao.save(curso);
+	  return dao.findAll();
   }
 
   @RequestMapping(value = "/cursosDelete/{id}", method = RequestMethod.DELETE)

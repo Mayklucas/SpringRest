@@ -1,10 +1,10 @@
 package com.algaworks.dao;
 
-import org.springframework.stereotype.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.algaworks.model.Curso;
 
-@Repository
-public class CursoDAO extends GenericDAO<Curso, Integer> {
+public interface CursoDAO extends JpaRepository<Curso, Integer> {
     
 }
