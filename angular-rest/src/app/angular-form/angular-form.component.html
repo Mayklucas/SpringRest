@@ -69,15 +69,15 @@
   
   <p-column field="nome" header="Curso" styleClass="col-curso">
     <ng-template pTemplate="body" let-curso="rowData">
-       <input  pInputText id="float-input" type="text" name="nome" 
-       value="{{ curso.nome }}" #nome>
+       <input  pInputText id="float-input" type="text" name="nomeIn" 
+       value="{{ curso.nome }}" #nomeIn>
     </ng-template>
   </p-column>
 
   <p-column field="duracao" header="Duração" styleClass="col-duracao">
     <ng-template pTemplate="body" let-curso="rowData">
-          <input pInputText id="float-input" type="text" name="duracao" 
-          value="{{ curso.duracao }}" #duracao>
+          <input pInputText id="float-input" type="text" name="duracaoIn" 
+          value="{{ curso.duracao }}" #duracaoIn>
     </ng-template>
   </p-column>
 
@@ -90,8 +90,8 @@
 
   <p-column header="Alterar" styleClass="col-alterar">
       <ng-template pTemplate="body" let-curso="rowData">
-          <button pButton icon="fa-pencil" (click)="metodoAlterar( curso.id, curso.nome, 
-          curso.duracao )"></button>
+          <button pButton icon="fa-pencil" (click)="metodoAlterar( curso.id, curso.nome,
+          curso.duracao)"></button>
       </ng-template>
   </p-column>
 </p-dataTable>

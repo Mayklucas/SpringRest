@@ -39,16 +39,17 @@ export class AngularFormComponent implements OnInit {
 
   }
 
-  metodoAlterar(id, nome, duracao) {
+  metodoAlterar(id, nomeIn, duracaoIn) {
     const curso = {
       id: id,
-      nome: nome,
-      duracao: duracao
+      nome: nomeIn,
+      duracao: duracaoIn,
   }
-     if((id != undefined) && (nome != '') && (duracao != '')){
+     if((id != undefined) && (nomeIn != '') && (duracaoIn != '')){
         this.http.put('http://localhost:8080/cursosAlterar/', curso)
         .subscribe(data => {
             this.metodoListarCurso = data;
+            console.log(data);
         });
      }
   }

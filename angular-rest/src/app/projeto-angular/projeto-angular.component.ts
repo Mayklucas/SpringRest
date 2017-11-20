@@ -27,9 +27,6 @@ export class ProjetoAngularComponent implements OnInit {
         .subscribe(data => {
           this.metodoListarCurso.emit(curso);
         });
-
-        nome = this.camposLimpos;
-        duracao = this.camposLimpos;
      }
   }
 
