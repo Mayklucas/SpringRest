@@ -10,9 +10,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Curso.listarIdPorNome", query = "select cursos from Curso cursos where "
-		+ "nome = :nome") 
-})
 @Table(name = "Cursos")
 public class Curso {
 

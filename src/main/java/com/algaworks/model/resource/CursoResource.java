@@ -40,6 +40,12 @@ public class CursoResource {
 	  return dao.findAll();
   }
   
+  @GetMapping
+  public List<Curso> buscar (@PathVariable String nome) {
+	  dao.buscarCurso(nome);
+	  return dao.findAll();
+  }
+  
   /*@RequestMapping(value = "/buscarCursos/{nome}", method = RequestMethod.GET)
   public ResponseEntity<List<Curso>> buscar(@PathVariable("nome") String nome) throws Exception {
 	List<Curso> listarnome = dao.listarIdPorNome("Curso", nome);
