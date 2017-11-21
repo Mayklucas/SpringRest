@@ -23,7 +23,7 @@ export class ProjetoAngularComponent implements OnInit {
        duracao: duracao
      };
      if((nome != undefined) && (duracao != undefined)){
-       this.http.post('http://localhost:8080/cursosAdicionar/', curso)
+       this.http.post('http://localhost:8080/', curso)
         .subscribe(data => {
           this.metodoListarCurso.emit(curso);
         });

@@ -32,7 +32,7 @@ export class AngularFormComponent implements OnInit {
   }
 
   metodoDeleta(id) {
-    this.http.delete('http://localhost:8080/cursosDelete/' + id).subscribe(
+    this.http.delete('http://localhost:8080/' + id).subscribe(
       data => {
         this.metodoListarCurso = data;
     });
