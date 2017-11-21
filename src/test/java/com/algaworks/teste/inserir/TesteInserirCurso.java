@@ -6,11 +6,11 @@ import com.algaworks.model.Curso;
 public class TesteInserirCurso {
 
 	public static void main(String[] args) {
-		CursoDAO dao = new CursoDAO();
+		/*CursoDAO dao = new CursoDAO();
 		Curso curso = new Curso();
 		curso.setNome("SpringBoot");
 		curso.setDuracao("32hs");
-		dao.salvar(curso);
+		dao.salvar(curso);*/
 	}
 
 }

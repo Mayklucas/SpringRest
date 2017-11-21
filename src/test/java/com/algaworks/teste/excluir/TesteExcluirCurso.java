@@ -6,8 +6,8 @@ import com.algaworks.model.Curso;
 public class TesteExcluirCurso {
    
 	public static void main(String[] args) throws Exception {
-		CursoDAO dao = new CursoDAO();
+		/*CursoDAO dao = new CursoDAO();
 		Curso curso = dao.listarPorId(Curso.class, 3);
-		dao.excluir(curso);
+		dao.excluir(curso);*/
 	}
 }
