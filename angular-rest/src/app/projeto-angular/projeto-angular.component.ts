@@ -1,3 +1,5 @@
+import { concat } from 'rxjs/operators';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -8,9 +10,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ProjetoAngularComponent implements OnInit {
 
-  curso: string = '';
+  nome: string = '';
   duracao: string = '';
-  camposLimpos = '';
   @Output() metodoListarCurso = new EventEmitter;
   
   constructor(private http: HttpClient) { }
@@ -18,20 +19,17 @@ export class ProjetoAngularComponent implements OnInit {
   ngOnInit() {}
 
   metodoAdicionar(nome: string, duracao: string): void {
-     const curso = {
-       nome: nome,
-       duracao: duracao
-     };
+    const curso = {
+      nome: nome,
+      duracao: duracao
+    }
      if((nome != undefined) && (duracao != undefined)){
        this.http.post('http://localhost:8080/', curso)
         .subscribe(data => {
           this.metodoListarCurso.emit(curso);
         });
+        
      }
   }
 
-  metodoLimpar(): void{
-      this.curso = this.camposLimpos;
-      this.duracao = this.camposLimpos;
-  }
 }

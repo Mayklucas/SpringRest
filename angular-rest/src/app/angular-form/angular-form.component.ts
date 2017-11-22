@@ -26,7 +26,7 @@ export class AngularFormComponent implements OnInit {
   }
 
   metodoBuscar(buscarNome: string): void{
-    this.http.get('http://localhost:8080/buscarCursos/' + buscarNome).subscribe(data => {
+    this.http.get('http://localhost:8080/' + buscarNome).subscribe(data => {
       this.metodoListarCurso = data;
     });
   }
@@ -46,7 +46,7 @@ export class AngularFormComponent implements OnInit {
       duracao: duracaoIn,
   }
      if((id != undefined) && (nomeIn != '') && (duracaoIn != '')){
-        this.http.put('http://localhost:8080/cursosAlterar/', curso)
+        this.http.put('http://localhost:8080/', curso)
         .subscribe(data => {
             this.metodoListarCurso = data;
             console.log(data);
