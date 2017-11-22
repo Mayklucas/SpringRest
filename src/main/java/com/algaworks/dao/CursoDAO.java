@@ -9,9 +9,6 @@ import com.algaworks.model.Curso;
 
 public interface CursoDAO extends JpaRepository<Curso, Integer> {
 	
-	//ORDENANDO PELO NOME//
-	List<Curso> findByNomeStartingWithOrderByNome (String nome);
-	
 	@Query("from Curso where nome like concat(?1, '%')")
 	List<Curso> BuscarCurso (String nome);
     
