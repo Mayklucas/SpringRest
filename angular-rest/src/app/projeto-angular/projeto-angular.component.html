@@ -11,12 +11,14 @@
        [(ngModel)]="duracao" name="duracao"/>
   </div>
 
-  <button type="submit" class="btn btn-danger" (click)=" metodoAdicionar()">
+  <button type="submit" class="btn btn-danger" (click)=" metodoAdicionar()"
+  (click)="metodoAdicionar(nome.value, duracao.value)>
     Cadastra
   </button>
 </form>
 <br-->
 <fieldset>
+  <!--form [FormGroup]="limparInput"-->
   <h3>Curso:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
@@ -36,6 +38,7 @@
   <button pButton type="button" (click)="metodoLimpar()" label="Limpar"  
   class="ui-button-primary">
   </button>
+ <!--/form-->
 </fieldset>
 
   

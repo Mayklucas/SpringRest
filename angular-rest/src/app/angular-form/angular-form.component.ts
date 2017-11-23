@@ -1,3 +1,4 @@
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OutletContext } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -12,11 +13,17 @@ export class AngularFormComponent implements OnInit {
   curso: string = '';
   duracao: string = '';
   buscarNome: String;
+  formulario: FormGroup;
   @Input('metodoListarCurso') metodoListarCurso: any = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.formulario = this.formBuilder.group({
+        'nome': new FormControl('', Validators.required),
+        'duracao': new FormControl('', Validators.required)
+    });
+  }
 
    
   metodoListar(): void {
@@ -43,7 +50,7 @@ export class AngularFormComponent implements OnInit {
     const curso = {
       id: id,
       nome: nomeIn,
-      duracao: duracaoIn,
+      duracao: duracaoIn
   }
      if((id != undefined) && (nomeIn != '') && (duracaoIn != '')){
         this.http.put('http://localhost:8080/', curso)

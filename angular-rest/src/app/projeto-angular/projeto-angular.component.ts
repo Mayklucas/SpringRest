@@ -12,11 +12,17 @@ export class ProjetoAngularComponent implements OnInit {
 
   nome: string = '';
   duracao: string = '';
+  limparInput: FormGroup;
   @Output() metodoListarCurso = new EventEmitter;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cursos: FormBuilder) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.limparInput = this.cursos.group({
+        'nome': new FormControl('', Validators.required),
+        'duracao': new FormControl('', Validators.required)
+    });
+  }
 
   metodoAdicionar(nome: string, duracao: string): void {
     const curso = {
@@ -32,4 +38,7 @@ export class ProjetoAngularComponent implements OnInit {
      }
   }
 
+  metodoLimpar() {
+    this.limparInput.reset();
+  }
 }

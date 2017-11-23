@@ -60,6 +60,7 @@
   </button>
 </fieldset>
 <br>
+<form [formGroup]="formulario">
 <p-dataTable [value]="metodoListarCurso" styleClass="col-form">
   <p-column field="id" header="id" styleClass="col-id">
     <ng-template pTemplate="body" let-curso="rowData">
@@ -69,15 +70,15 @@
   
   <p-column field="nome" header="Curso" styleClass="col-curso">
     <ng-template pTemplate="body" let-curso="rowData">
-       <input  pInputText id="float-input" type="text" name="nomeIn" 
-       value="{{ curso.nome }}" #nomeIn>
+       <input  pInputText id="float-input" type="text"
+       formControlName="nome" value="{{ curso.nome }}">
     </ng-template>
   </p-column>
 
   <p-column field="duracao" header="Duração" styleClass="col-duracao">
     <ng-template pTemplate="body" let-curso="rowData">
-          <input pInputText id="float-input" type="text" name="duracaoIn" 
-          value="{{ curso.duracao }}" #duracaoIn>
+          <input pInputText id="float-input" type="text"
+          formControlName="duracao" value="{{ curso.duracao }}">
     </ng-template>
   </p-column>
 
@@ -90,8 +91,8 @@
 
   <p-column header="Alterar" styleClass="col-alterar">
       <ng-template pTemplate="body" let-curso="rowData">
-          <button pButton icon="fa-pencil" (click)="metodoAlterar( curso.id, curso.nome,
-          curso.duracao)"></button>
+          <button pButton icon="fa-pencil" (click)="metodoAlterar()"></button>
       </ng-template>
   </p-column>
 </p-dataTable>
+</form>

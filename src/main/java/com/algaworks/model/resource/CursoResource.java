@@ -48,21 +48,9 @@ public class CursoResource {
   
   @PutMapping
   public List<Curso> alterar (@RequestBody Curso curso) {
-	  curso.setId(curso.getId());
-	  curso.setNome(curso.getNome());
-	  curso.setDuracao(curso.getDuracao());
+	  dao.save(curso);
 	  return dao.findAll();
   }
-  
- /*@RequestMapping(value = "/cursosAlterar/", method = RequestMethod.PUT)
- @ResponseBody
-  public ResponseEntity<List<Curso>> alterar(@RequestBody Curso curso) throws Exception{
-	Curso cursoAt = dao.listarPorId(Curso.class, curso.getId());
-	cursoAt.setNome(curso.getNome());
-	cursoAt.setDuracao(curso.getDuracao());
-	dao.alterar(curso);
-	
-	return new ResponseEntity<List<Curso>>(new ArrayList<Curso>(dao.listar(Curso.class)), HttpStatus.OK);
-  }*/
+ 
 }
  
