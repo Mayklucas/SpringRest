@@ -45,23 +45,26 @@
 </table-->
 
 <fieldset>
-  <h3>Procure seu curso:</h3>
+  <legend><button pButton type="button" label="Pesquisar Curso"  
+    class="ui-button-primary"></button></legend>
+    <br>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
      name="curso" #buscarNome> 
     <label for="float-input">Html</label>
+
+    <button pButton type="button" (click)="metodoBuscar(buscarNome.value)" icon="fa-search"  
+    class="ui-button-primary" pTooltip="Pesquisar" tooltipPosition="top">
+    </button>
+
+    <button pButton type="button" (click)="metodoListar()" label="Listar"   
+    class="ui-button-primary">
+    </button>
   </span>
-  <br>
-  <button pButton type="button" (click)="metodoBuscar(buscarNome.value)" label="Pesquisar"  
-  class="ui-button-primary">
-  </button>
-  <button pButton type="button" (click)="metodoListar()" label="Listar"  
-  class="ui-button-primary">
-  </button>
 </fieldset>
 <br>
 <form [formGroup]="formulario">
-<p-dataTable [value]="metodoListarCurso" styleClass="col-form">
+<p-dataTable [value]="metodoListarCurso" [paginator]="true" [rows]="8" styleClass="col-form">
   <p-column field="id" header="id" styleClass="col-id">
     <ng-template pTemplate="body" let-curso="rowData">
         {{ curso.id }}
@@ -84,14 +87,17 @@
 
   <p-column header="Excluir" styleClass="col-excluir">
       <ng-template pTemplate="body" let-curso="rowData">
-          <button pButton icon="fa-trash" (click)="metodoDeleta( curso.id )">
+          <button pButton icon="fa-trash" (click)="metodoDeleta( curso.id )"
+          pTooltip="Deletar" tooltipPosition="top">
           </button>
       </ng-template>
   </p-column>
 
   <p-column header="Alterar" styleClass="col-alterar">
       <ng-template pTemplate="body" let-curso="rowData">
-          <button pButton icon="fa-pencil" (click)="metodoAlterar()"></button>
+          <button pButton icon="fa-pencil" (click)="metodoAlterar()"
+          pTooltip="Alterar" tooltipPosition="top">
+        </button>
       </ng-template>
   </p-column>
 </p-dataTable>

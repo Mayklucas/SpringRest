@@ -1,10 +1,11 @@
 fieldset{
     margin-left: 60px;   
-    margin-right: 57px;  
+    margin-right: 60px;  
+    border-radius: 10px;
 }
 
 input{
-    height: 35px;
+    height: 34px;
     width: 400px;
 }
 

@@ -20,7 +20,8 @@
 }
 .col-form {
     left: 60px;
-    width: 1146px;
+    width: 1145px;
+    border-radius: 10px;
 }
 
 .col-alterar {

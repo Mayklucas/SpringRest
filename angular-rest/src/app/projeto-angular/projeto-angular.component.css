@@ -1,13 +1,18 @@
 fieldset{
     margin-left: 60px;   
     margin-right: 60px;  
+    border-radius: 10px;
 }
 
 input{
     height: 34px;
-    width: 1120px;
+    width: 1110px;
 }
 
 h3{
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#buton {
+    margin-left: 916px;
 }

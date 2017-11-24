@@ -18,7 +18,8 @@
 </form>
 <br-->
 <fieldset>
-  <!--form [FormGroup]="limparInput"-->
+  <legend><button pButton type="button" label="Cadastrar Curso"  
+    class="ui-button-primary"></button></legend>
   <h3>Curso:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
@@ -32,13 +33,14 @@
     <label for="float-input">00hs</label>
   </span>
   <br>
+  <div id="buton">
   <button pButton type="button" (click)="metodoAdicionar(nome.value, duracao.value)" 
-  label="Cadastra" class="ui-button-primary">
+  label="Cadastrar" class="ui-button-primary">
   </button>
   <button pButton type="button" (click)="metodoLimpar()" label="Limpar"  
   class="ui-button-primary">
   </button>
- <!--/form-->
+  </div>
 </fieldset>
 
   

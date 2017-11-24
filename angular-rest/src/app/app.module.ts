@@ -12,7 +12,9 @@ import { AngularFormComponent } from './angular-form/angular-form.component';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
-import { SharedModule, PanelModule } from 'primeng/primeng';
+import { PanelModule } from 'primeng/components/panel/panel';
+import { TooltipModule } from 'primeng/components/tooltip/tooltip';
+import { SharedModule } from 'primeng/primeng';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { SharedModule, PanelModule } from 'primeng/primeng';
     ButtonModule,
     DataTableModule,
     SharedModule,
-    PanelModule
+    PanelModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
