@@ -65,7 +65,8 @@
   </span>
 </fieldset>
 <br>
-<p-dataTable [value]="metodoListarCurso" [paginator]="true" [rows]="8" styleClass="col-form">
+<p-dataTable [value]="metodoListarCurso" [paginator]="true" [rows]="8" [responsive]="true" 
+ styleClass="col-form">
   <p-column field="id" header="id" styleClass="col-id">
     <ng-template pTemplate="body" let-curso="rowData">
         {{ curso.id }}
