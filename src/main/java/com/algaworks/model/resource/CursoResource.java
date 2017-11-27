@@ -48,7 +48,7 @@ public class CursoResource {
   
   @PutMapping
   public List<Curso> alterar (@RequestBody Curso curso) {
-	  dao.save(curso);
+	  dao.saveAndFlush(curso);
 	  return dao.findAll();
   }
  

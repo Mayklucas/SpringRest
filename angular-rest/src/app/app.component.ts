@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, Input } from '@angular/core';
 export class AppComponent {
 
   metodoListarCurso: any = [];
- 
+  
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {

@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class AngularFormComponent implements OnInit {
 
-  curso: string = '';
+  curso = {};
   duracao: string = '';
   buscarNome: String;
   formulario: FormGroup;
@@ -20,15 +20,18 @@ export class AngularFormComponent implements OnInit {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-        'nome': new FormControl('', Validators.required),
-        'duracao': new FormControl('', Validators.required)
+        nome: [''],
+        duracao: [''],
+        'buscar': new FormControl('', Validators.required)
     });
   }
 
    
   metodoListar(): void {
     this.http.get('http://localhost:8080/').subscribe(data => {
-      this.metodoListarCurso = data; 
+      this.metodoListarCurso = data;
+
+      this.formulario.reset();
     });
   }
 
@@ -46,19 +49,30 @@ export class AngularFormComponent implements OnInit {
 
   }
 
-  metodoAlterar(id, nomeIn, duracaoIn) {
-    const curso = {
-      id: id,
-      nome: nomeIn,
-      duracao: duracaoIn
-  }
-     if((id != undefined) && (nomeIn != '') && (duracaoIn != '')){
-        this.http.put('http://localhost:8080/', curso)
+  metodoAlterar(id, nome, duracao) {
+    if(this.formulario.value.nome == ''){
+      this.curso = {
+        id: id,
+        nome: nome,
+        duracao: this.formulario.value.duracao
+      }
+    }else if(this.formulario.value.duracao == ''){
+      this.curso = {
+        id: id,
+        nome: this.formulario.value.nome,
+        duracao: duracao
+      }
+    }else{
+      this.curso = {
+        id: id,
+        nome: this.formulario.value.nome,
+        duracao: this.formulario.value.duracao
+      }
+    }
+        this.http.put('http://localhost:8080/', this.curso)
         .subscribe(data => {
             this.metodoListarCurso = data;
-            console.log(data);
         });
-     }
   }
 
   metodoAdicionarCurso(adicionar){

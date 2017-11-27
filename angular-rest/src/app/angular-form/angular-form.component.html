@@ -44,13 +44,14 @@
   </tr>
 </table-->
 
+<form [formGroup]="formulario">
 <fieldset>
   <legend><button pButton type="button" label="Pesquisar Curso"  
     class="ui-button-primary"></button></legend>
     <br>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
-     name="curso" #buscarNome> 
+    formControlName="buscar" #buscarNome> 
     <label for="float-input">Html</label>
 
     <button pButton type="button" (click)="metodoBuscar(buscarNome.value)" icon="fa-search"  
@@ -63,7 +64,6 @@
   </span>
 </fieldset>
 <br>
-<form [formGroup]="formulario">
 <p-dataTable [value]="metodoListarCurso" [paginator]="true" [rows]="8" styleClass="col-form">
   <p-column field="id" header="id" styleClass="col-id">
     <ng-template pTemplate="body" let-curso="rowData">
@@ -71,14 +71,14 @@
     </ng-template>
   </p-column>
   
-  <p-column field="nome" header="Curso" styleClass="col-curso">
+  <p-column header="Curso" styleClass="col-curso">
     <ng-template pTemplate="body" let-curso="rowData">
        <input  pInputText id="float-input" type="text"
        formControlName="nome" value="{{ curso.nome }}">
     </ng-template>
   </p-column>
 
-  <p-column field="duracao" header="Duração" styleClass="col-duracao">
+  <p-column header="Duração" styleClass="col-duracao">
     <ng-template pTemplate="body" let-curso="rowData">
           <input pInputText id="float-input" type="text"
           formControlName="duracao" value="{{ curso.duracao }}">
@@ -95,8 +95,8 @@
 
   <p-column header="Alterar" styleClass="col-alterar">
       <ng-template pTemplate="body" let-curso="rowData">
-          <button pButton icon="fa-pencil" (click)="metodoAlterar()"
-          pTooltip="Alterar" tooltipPosition="top">
+          <button pButton icon="fa-pencil" (click)="metodoAlterar(curso.id, curso.nome, 
+          curso.duracao)" pTooltip="Alterar" tooltipPosition="top">
         </button>
       </ng-template>
   </p-column>

@@ -17,19 +17,20 @@
   </button>
 </form>
 <br-->
+<form [formGroup]="limparInput">
 <fieldset>
   <legend><button pButton type="button" label="Cadastrar Curso"  
     class="ui-button-primary"></button></legend>
   <h3>Curso:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
-    name="nome" #nome> 
+    formControlName="nome" #nome> 
     <label for="float-input">Java</label>
   </span>
   <h3>Duração:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText
-    name="duracao" #duracao> 
+    formControlName="duracao" #duracao> 
     <label for="float-input">00hs</label>
   </span>
   <br>
@@ -42,5 +43,6 @@
   </button>
   </div>
 </fieldset>
+</form>
 
   
