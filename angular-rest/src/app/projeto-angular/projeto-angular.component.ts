@@ -1,4 +1,5 @@
 import { concat } from 'rxjs/operators';
+import {Message} from 'primeng/components/common/api';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
@@ -13,6 +14,7 @@ export class ProjetoAngularComponent implements OnInit {
   nome: string = '';
   duracao: string = '';
   limparInput: FormGroup;
+  mensagem: Message[] = [];
   @Output() metodoListarCurso = new EventEmitter;
   
   constructor(private http: HttpClient, private cursos: FormBuilder) { }
@@ -33,12 +35,20 @@ export class ProjetoAngularComponent implements OnInit {
        this.http.post('http://localhost:8080/', curso)
         .subscribe(data => {
           this.metodoListarCurso.emit(curso);
+
+          this.mensagem = [];
+          this.mensagem.push({severity:'success', summary:'Cadastrado Com Sucesso'});
         });
-        
      }
   }
 
   metodoLimpar() {
     this.limparInput.reset();
   }
+
+  mensagemUp() {
+    this.mensagem = [];
+    this.mensagem.push({severity:'warn', summary:'Por favor Cadastre um Curso'});
+  }
+
 }

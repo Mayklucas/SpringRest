@@ -19,8 +19,10 @@
 <br-->
 <form [formGroup]="limparInput">
 <fieldset>
+  <p-growl [(value)]="mensagem"></p-growl>
+    
   <legend><button pButton type="button" label="Cadastrar Curso"  
-    class="ui-button-primary"></button></legend>
+    class="ui-button-primary" (click)="mensagemUp()"></button></legend>
   <h3>Curso:</h3>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 

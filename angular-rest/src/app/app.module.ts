@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/components/button/button';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { PanelModule } from 'primeng/components/panel/panel';
 import { TooltipModule } from 'primeng/components/tooltip/tooltip';
+import { GrowlModule } from 'primeng/components/growl/growl';
 import { SharedModule } from 'primeng/primeng';
 
 
@@ -33,7 +34,8 @@ import { SharedModule } from 'primeng/primeng';
     DataTableModule,
     SharedModule,
     PanelModule,
-    TooltipModule
+    TooltipModule,
+    GrowlModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

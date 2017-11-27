@@ -1,5 +1,6 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OutletContext } from '@angular/router';
+import {Message} from 'primeng/components/common/api';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
@@ -14,6 +15,7 @@ export class AngularFormComponent implements OnInit {
   duracao: string = '';
   buscarNome: String;
   formulario: FormGroup;
+  mensagem: Message[] = [];
   @Input('metodoListarCurso') metodoListarCurso: any = {};
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
@@ -45,6 +47,9 @@ export class AngularFormComponent implements OnInit {
     this.http.delete('http://localhost:8080/' + id).subscribe(
       data => {
         this.metodoListarCurso = data;
+
+        this.mensagem = [];
+        this.mensagem.push({severity:'success', summary:'Deletado Com Sucesso'});
     });
 
   }
@@ -72,7 +77,15 @@ export class AngularFormComponent implements OnInit {
         this.http.put('http://localhost:8080/', this.curso)
         .subscribe(data => {
             this.metodoListarCurso = data;
+
+            this.mensagem = [];
+            this.mensagem.push({severity:'success', summary:'Alterado Com Sucesso'});
         });
+  }
+
+  mensagemDom() {
+    this.mensagem = [];
+    this.mensagem.push({severity:'warn', summary:'Por favor Pesquise um Curso'});
   }
 
   metodoAdicionarCurso(adicionar){

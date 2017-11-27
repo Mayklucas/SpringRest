@@ -46,8 +46,9 @@
 
 <form [formGroup]="formulario">
 <fieldset>
+  <p-growl [(value)]="mensagem"></p-growl>
   <legend><button pButton type="button" label="Pesquisar Curso"  
-    class="ui-button-primary"></button></legend>
+    class="ui-button-primary" (click)="mensagemDom()"></button></legend>
     <br>
   <span class="ui-float-label">
     <input id="float-input" type="text" size="30" pInputText 
