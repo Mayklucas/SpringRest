@@ -38,7 +38,8 @@ export class ProjetoAngularComponent implements OnInit {
 
           this.mensagem = [];
           this.mensagem.push({severity:'success', summary:'Cadastrado Com Sucesso'});
-        });
+        });  
+       
      }
   }
 
